@@ -11,6 +11,9 @@ on:
 jobs:
   push-app-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     defaults:
       run:
         working-directory: './apps/nuq-postgres'
@@ -27,5 +30,5 @@ jobs:
 
       - name: 'Build NuQ Postgres Image'
         run: |
-          docker build . --tag ghcr.io/firecrawl/nuq-postgres:latest
-          docker push ghcr.io/firecrawl/nuq-postgres:latest
+          docker build . --tag ghcr.io/ai-hermes/nuq-postgres:latest
+          docker push ghcr.io/ai-hermes/nuq-postgres:latest

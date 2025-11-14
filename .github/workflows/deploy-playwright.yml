@@ -14,6 +14,9 @@ on:
 jobs:
       push-app-image:
         runs-on: ubuntu-latest
+        permissions:
+          contents: read
+          packages: write
         defaults:
           run:
             working-directory: './apps/playwright-service-ts'
@@ -30,5 +33,5 @@ jobs:
 
           - name: 'Build Inventory Image'
             run: |
-              docker build . --tag ghcr.io/firecrawl/playwright-service:latest
-              docker push ghcr.io/firecrawl/playwright-service:latest
+              docker build . --tag ghcr.io/ai-hermes/playwright-service:latest
+              docker push ghcr.io/ai-hermes/playwright-service:latest

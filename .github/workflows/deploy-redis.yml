@@ -14,6 +14,9 @@ on:
 jobs:
       push-app-image:
         runs-on: ubuntu-latest
+        permissions:
+          contents: read
+          packages: write
         defaults:
           run:
             working-directory: './apps/redis'
@@ -30,5 +33,5 @@ jobs:
 
           - name: 'Build Inventory Image'
             run: |
-              docker build . --tag ghcr.io/firecrawl/firecrawl-redis:latest
-              docker push ghcr.io/firecrawl/firecrawl-redis:latest
+              docker build . --tag ghcr.io/ai-hermes/firecrawl-redis:latest --build-arg REDIS_VERSION=latest
+              docker push ghcr.io/ai-hermes/firecrawl-redis:latest
